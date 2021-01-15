@@ -7,15 +7,21 @@
 
 #include "Circle.h"
 #include <sstream>
+#include <iostream>
+#include <stdexcept>
 
 Circle::Circle(const std::string &name, Point2D *center, unsigned int radius):
 		Form(name),
 		center(center),
 		radius(radius)
 {
+	if (radius == 0){
+		throw std::invalid_argument("radius of a circle must be positive");
+	}
 }
 
 Circle::~Circle() {
+	//std::clog << "Circle destroyed: " << getName() << std::endl;
 }
 
 Point2D* Circle::getCenter() const {

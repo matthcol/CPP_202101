@@ -19,6 +19,10 @@ private:
 public:
 	static constexpr double PI = 3.141592653589793;
 
+	/**
+	 * radius must be strictly positive
+	 * throws std::invalid_argument exception otherwise
+	 */
 	Circle(const std::string &name, Point2D *center, unsigned int radius);
 	virtual ~Circle();
 

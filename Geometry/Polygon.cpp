@@ -42,6 +42,7 @@ Point2D* Polygon::getSummit(unsigned int index) const {
 	return summits[index];
 }
 
+
 double Polygon::perimeter() const {
 	double res=0.0;
 //	for (unsigned int i=0; i<size; ++i) {
@@ -72,10 +73,26 @@ Polygon::Polygon(const Polygon &other):
 {
 }
 
+Polygon::Polygon(Polygon &&other):
+	Form(other), summits(other.summits), size(other.size)
+{
+	// cleanup source
+	other.summits = nullptr;
+	other.size = 0;
+}
+
 Polygon& Polygon::operator =(const Polygon &other) {
 	setName(other.getName());
 	replaceSummits(other.summits, other.summits+other.size);
 	return *this;
 }
 
-
+Polygon& Polygon::operator =(Polygon &&other) {
+	setName(other.getName());
+	this->summits = other.summits;
+	this->size = other.size;
+	// cleanup source
+	other.summits = nullptr;
+	other.size = 0;
+	return *this;
+}

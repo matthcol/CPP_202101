@@ -12,7 +12,7 @@ Form::Form(const std::string &name):name(name) {
 }
 
 Form::~Form() {
-	// std::clog << "Form destroyed: " << getName() << std::endl;
+	std::clog << "Form destroyed: " << getName() << std::endl;
 }
 
 const std::string& Form::getName() const {
@@ -21,4 +21,17 @@ const std::string& Form::getName() const {
 
 void Form::setName(const std::string &name) {
 	this->name = name;
+}
+
+std::optional<std::string> nameFromForm(const Form &form) {
+	if (form.getName().empty()) {
+		return std::nullopt;  // boite vide
+	} else {
+		return form.getName(); // conversion implicite
+	}
+}
+
+Form::Form() noexcept:
+	name("")
+{
 }

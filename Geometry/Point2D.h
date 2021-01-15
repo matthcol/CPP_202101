@@ -16,7 +16,14 @@ private:
 	int y;
 public:
 	Point2D(const std::string &name, int x, int y);
+	// explicit Point2D(const std::string &name);
+	Point2D(const std::string &name);
+	Point2D(const Point2D &other);
+	Point2D(Point2D &&other);
 	virtual ~Point2D();
+
+	Point2D& operator=(const Point2D &other);
+	Point2D& operator=(Point2D &&other);
 
 	virtual void translate(int deltaX, int deltaY) override;
 	virtual std::string toString() const override;

@@ -31,15 +31,18 @@ public:
 	Polygon(const std::string &name, InputIterator first, InputIterator last):
 		Form(name),
 		summits(nullptr),
-		size(std::distance(first,last))
+		size(0)
 	{
 		replaceSummits(first, last);
 	}
 
 	// Polygon(const Polygon &other) =delete;
 	Polygon(const Polygon &other);
+	// Polygon(Polygon &&other) =delete;
+	Polygon(Polygon &&other);
 	// Polygon& operator=(const Polygon &other) =delete;
 	Polygon& operator=(const Polygon &other);
+	Polygon& operator=(Polygon &&other);
 
 	virtual ~Polygon();
 
@@ -65,6 +68,7 @@ public:
 		}
 		summits = new Point2D*[size];
 		std::copy(first, last, summits);
+		this->size = size;
 	}
 
 	virtual void translate(int deltaX, int deltaY) override;

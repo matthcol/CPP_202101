@@ -9,12 +9,14 @@
 #define FORM_H_
 
 #include <string>
+#include <optional>
 
 // abstract class (at least one abstract method)
 class Form {
 private:
 	std::string name;
 public:
+	Form() noexcept;
 	Form(const std::string &name);
 	virtual	~Form();
 
@@ -25,5 +27,7 @@ public:
 	virtual void translate(int deltaX, int deltaY)=0;
 	virtual std::string toString() const=0;
 };
+
+std::optional<std::string> nameFromForm(const Form& form);
 
 #endif /* FORM_H_ */
