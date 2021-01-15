@@ -100,6 +100,7 @@ void testCopieForms() {
 }
 
 int main() {
+	std::cout << "Test POO on Geometry Model" <<std::endl;
 	// std::cout << "PI = " << Circle::PI << std::endl;
 	// testInheritance();
 	// testSegment();
